@@ -1,7 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Banner.css'
+import axios from "../axios/axios"
+import request from "../axios/Requiest"
 
 const Banner = () => {
+    interface Movies {
+        backdrop_path: string;
+    };
+    const [movie, setMovie] = useState<any[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getRequest = await axios.get(request.fetchNetfelixOriginals);
+            setMovie(
+                getRequest.data.results[
+                    Math.floor(Math.random() * getRequest.data.results.length-1)
+                ]
+            );
+            return getRequest;
+        }
+        fetchData()
+    }, [])
+
+    console.log(movie)
 
    const  truncate = (string: string, n: number) =>  {
     return string?.length > n ? string.substr(0,n-1) + '...' : string
@@ -11,12 +32,12 @@ const Banner = () => {
   return (
     <header className='banner' style={{
         backgroundSize: "cover",
-        backgroundImage: `url("https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_flag.svg/1200px-Black_flag.svg.png")`,
+        backgroundImage: `url("https://image.tmdb.org/t/p/original/${(movie as any).backdrop_path}")`,
         backgroundPosition: "center center"
     }}>
         <div className="banner__contents">
             <h1 className="banner__title">
-                Movie Name
+                {(movie as any).original_name}
             </h1>
             <div className="banner__buttons__contianer">
                     <button className='banner__button'>play</button>
