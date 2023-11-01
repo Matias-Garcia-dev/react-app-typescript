@@ -37,21 +37,14 @@ const Banner = () => {
     }}>
         <div className="banner__contents">
             <h1 className="banner__title">
-                {(movie as any).original_name}
+                {(movie as any).original_name || (movie as any).title || (movie as any).name}
             </h1>
             <div className="banner__buttons__contianer">
                     <button className='banner__button'>play</button>
                     <button className='banner__button'>My list</button>
                 </div>
                 <h1 className="banner__description">
-                    {truncate(`this is a description test this is a description testthis is a description testthis is a description testthis is a description testthis is a description testthis is a description testthis is a description test
-                                this is a description testthis is a description test
-                                this is a description testthis is a description test
-                                this is a description testthis is a description test
-                                this is a description testthis is a description test
-                                this is a description test
-                                this is a description test
-                                this is a description test`, 150 )}
+                    {truncate((movie as any).overview, 150 )}
 
                 </h1>
         </div>
