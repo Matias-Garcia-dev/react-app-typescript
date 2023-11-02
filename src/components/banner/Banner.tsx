@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './Banner.css'
 import axios from "../axios/axios"
-import request from "../axios/Requiest"
+import request from "../axios/Request"
 
 const Banner = () => {
-    interface Movies {
-        backdrop_path: string;
-    };
     const [movie, setMovie] = useState<any[]>([]);
 
     useEffect(() => {
@@ -22,7 +19,6 @@ const Banner = () => {
         fetchData()
     }, [])
 
-    console.log(movie)
 
    const  truncate = (string: string, n: number) =>  {
     return string?.length > n ? string.substr(0,n-1) + '...' : string
