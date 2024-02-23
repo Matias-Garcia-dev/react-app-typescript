@@ -20,7 +20,6 @@ function App() {
           uid: userAuth.uid,
           email: userAuth.email
         }))
-        console.log(userAuth);
       } else {
         dispatch(logout())
       }

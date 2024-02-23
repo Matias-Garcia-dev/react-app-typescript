@@ -19,7 +19,7 @@ function Row(props:
         
   return (
     <div className='row'>
-        <h1>{props.title}</h1>
+        <h1 className='row__title'>{props.title}</h1>
 
         <div className="row__posters_wrapper">
             {movies.map(movie => (
