@@ -27,11 +27,13 @@ const Banner = () => {
     return string?.length > n ? string.substr(0,n-1) + '...' : string
     }
 
+    console.log(movie)
+
 
   return (
     <header className='banner' style={{
         backgroundSize: "cover",
-        backgroundImage: `url("https://image.tmdb.org/t/p/original/${(movie as any).backdrop_path || undefined}")`,
+        backgroundImage: `url("https://image.tmdb.org/t/p/original/${(movie as any).backdrop_path}")`,
         backgroundPosition: "center center"
     }}>
         <div className="banner__contents">
