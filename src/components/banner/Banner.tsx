@@ -9,6 +9,9 @@ const Banner = () => {
     useEffect(() => {
         const fetchData = async () => {
             const getRequest = await axios.get(request.fetchNetfelixOriginals);
+            console.log("movie request",getRequest.data.results[
+                Math.floor(Math.random() * getRequest.data.results.length-1)
+            ])
             setMovie(
                 getRequest.data.results[
                     Math.floor(Math.random() * getRequest.data.results.length-1)
@@ -23,6 +26,8 @@ const Banner = () => {
    const  truncate = (string: string, n: number) =>  {
     return string?.length > n ? string.substr(0,n-1) + '...' : string
     }
+
+    console.log(movie)
 
 
   return (
